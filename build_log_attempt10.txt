@@ -1,0 +1,194 @@
+﻿
+> next-app@0.1.0 build
+> next build
+
+node.exe :  ΓÜá 
+Warning: Next.js 
+inferred your 
+workspace root, but 
+it may not be 
+correct.
+At line:1 char:1
++ & "C:\Program Files
+\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : 
+NotSpecifi    ed: ( 
+ΓÜá Warning:     
+N...not be correc    
+t.:String) [], Rem   
+ oteException
+    + 
+FullyQualifiedEr    
+rorId : NativeComm   
+ andError
+ 
+ We detected 
+multiple lockfiles 
+and selected the 
+directory of C:\Users
+\mahim\OneDrive\Deskt
+op\sharp\package-lock
+.json as the root 
+directory.
+ To silence this 
+warning, set 
+`turbopack.root` in 
+your Next.js config, 
+or consider removing 
+one of the lockfiles 
+if it's not needed.
+   See https://nextjs
+.org/docs/app/api-ref
+erence/config/next-co
+nfig-js/turbopack#roo
+t-directory for more 
+information.
+ Detected additional 
+lockfiles: 
+   * C:\Users\mahim\O
+neDrive\Desktop\sharp
+\SEWebsite\pnpm-lock.
+yaml
+
+   Γû▓ Next.js 16.0.10 (Turbopack)
+
+   Creating an optimized production build ...
+Turbopack build 
+encountered 1 
+warnings:
+./SEWebsite/app/lib/h
+tml.ts:176:37
+The file pattern ('/R
+OOT/SEWebsite/public/
+' <dynamic> | '/ROOT/
+SEWebsite/public' 
+<dynamic>) matches 
+11192 files in 
+[project]/SEWebsite
+[0m [90m 174 |[39m
+ [90m 175 |[39m   
+[36mfor[39m 
+([36mconst[39m 
+relativePath 
+[36mof[39m 
+candidates) {
+[31m[1m>[22m[39m
+[90m 176 |[39m     
+[36mconst[39m 
+fullPath [33m=[39m 
+path[33m.[39mnormal
+ize(path[33m.[39mjo
+in([33mPUBLIC_DIR[3
+9m[33m,[39m relativ
+ePath))[33m;[39m
+ [90m     |[39m    
+                     
+            [31m[1m
+^[22m[39m[31m[1m^
+[22m[39m[31m[1m^
+[22m[39m[31m[1m^[
+22m[39m[31m[1m^[2
+2m[39m[31m[1m^[22
+m[39m[31m[1m^[22m
+[39m[31m[1m^[22m
+[39m[31m[1m^[22m[
+39m[31m[1m^[22m[3
+9m[31m[1m^[22m[39
+m[31m[1m^[22m[39m
+[31m[1m^[22m[39m
+[31m[1m^[22m[39m[
+31m[1m^[22m[39m[3
+1m[1m^[22m[39m[31
+m[1m^[22m[39m[31m
+[1m^[22m[39m[31m
+[1m^[22m[39m[31m[
+1m^[22m[39m[31m[1
+m^[22m[39m[31m[1m
+^[22m[39m[31m[1m^
+[22m[39m[31m[1m^
+[22m[39m[31m[1m^[
+22m[39m[31m[1m^[2
+2m[39m[31m[1m^[22
+m[39m[31m[1m^[22m
+[39m[31m[1m^[22m
+[39m[31m[1m^[22m[
+39m[31m[1m^[22m[3
+9m[31m[1m^[22m[39
+m[31m[1m^[22m[39m
+[31m[1m^[22m[39m
+[31m[1m^[22m[39m
+ [90m 177 |[39m
+ [90m 178 |[39m    
+ [36mif[39m ([33m!
+[39mfullPath[33m.[
+39mstartsWith([33mPU
+BLIC_DIR[39m)) [36m
+continue[39m[33m;[
+39m
+ [90m 179 |[39m    
+ [36mif[39m ([33m!
+[39m([36mawait[39m
+ fileExists(fullPath)
+)) [36mcontinue[39m
+[33m;[39m[0m
+
+Overly broad 
+patterns can lead to 
+build performance 
+issues and over 
+bundling.
+
+Import trace:
+  Server Component:
+    ./SEWebsite/app/l
+ib/html.ts
+    ./SEWebsite/app/[
+...slug]/page.tsx
+
+
+ Γ£ô Compiled successfully in 13.7s
+   Running TypeScript ...
+Failed to compile.
+
+./components/rich-tex
+t-editor.tsx:7:3
+Type error: Module 
+'"@tiptap/react"' 
+has no exported 
+member 'BubbleMenu'.
+
+[0m [90m  5 |[39m 
+  [33mEditorContent
+[39m[33m,[39m
+ [90m  6 |[39m   
+useEditor[33m,[39m
+[31m[1m>[22m[39m
+[90m  7 |[39m   [33
+mBubbleMenu[39m[33m
+,[39m
+ [90m    |[39m   
+[31m[1m^[22m[39m
+ [90m  8 |[39m   [
+33mFloatingMenu[39m
+[33m,[39m
+ [90m  9 |[39m } 
+[36mfrom[39m [32m'
+@tiptap/react'[39m[
+33m;[39m
+ [90m 10 |[39m 
+[36mimport[39m 
+[33mStarterKit[39m 
+[36mfrom[39m [32m'
+@tiptap/starter-kit'
+[39m[33m;[39m[0m
+Next.js build worker 
+exited with code: 1 
+and signal: null

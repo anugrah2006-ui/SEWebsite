@@ -1,0 +1,19 @@
+{
+  "siteTitle": "My Site",
+  "siteDescription": "Welcome to my website. Edit these values from the admin panel.",
+  "pages": {
+    "home": {
+      "title": "Home",
+      "sections": {
+        "hero": { "heading": "Welcome!", "subheading": "This is the hero section." },
+        "features": { "items": ["Fast", "Reliable", "Beautiful"] }
+      }
+    },
+    "about": {
+      "title": "About",
+      "sections": {
+        "team": { "text": "Our team is exceptional." }
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+import db from './db'
+
+export type ViewEvent = {
+  article_id?: number | null
+  ip?: string | null
+  user_agent?: string | null
+  referrer?: string | null
+  created_at?: string | null
+  user_id?: number | null
+}
+
+const BUFFER_LIMIT = 1000
+const FLUSH_INTERVAL_MS = 2 * 60 * 1000 // 2 minutes
+
+let buffer: ViewEvent[] = []
+let flushTimer: NodeJS.Timeout | null = null
+let flushing = false
+
+function scheduleFlush() {
+  if (flushTimer) return
+  flushTimer = setTimeout(() => {
+    flushTimer = null
+    void flush().catch(err => console.error('[analytics-buffer] scheduled flush failed', err))
+  }, FLUSH_INTERVAL_MS)
+}
+
+export async function flush() {
+  if (flushing) return
+  if (buffer.length === 0) return
+  flushing = true
+
+  const toInsert = buffer.splice(0, buffer.length)
+  if (flushTimer) { clearTimeout(flushTimer); flushTimer = null }
+
+  try {
+    const placeholders = toInsert.map(() => '(?, ?, ?, ?, ?, ?)').join(', ')
+    const sql = `INSERT INTO article_view_events (article_id, ip, user_agent, referrer, created_at, user_id) VALUES ${placeholders}`
+    const params: any[] = []
+    for (const ev of toInsert) {
+      params.push(
+        ev.article_id ?? null,
+        ev.ip ?? null,
+        ev.user_agent ?? null,
+        ev.referrer ?? null,
+        ev.created_at ?? null,
+        ev.user_id ?? null
+      )
+    }
+    if (params.length > 0) {
+      await (db as any).execute(sql, params)
+    }
+  } catch (err) {
+    console.error('[analytics-buffer] flush failed, re-queueing', err)
+    // Put failed batch back to front
+    buffer = [...toInsert, ...buffer]
+  } finally {
+    flushing = false
+  }
+}
+
+export function enqueueViewEvent(ev: ViewEvent) {
+  buffer.push(ev)
+  if (buffer.length >= BUFFER_LIMIT) {
+    void flush()
+    return
+  }
+  scheduleFlush()
+}
+
+// Best-effort flush on graceful shutdown
+if (typeof process !== 'undefined' && process && (process as any).on) {
+  ;(process as any).on('beforeExit', () => {
+    if (flushTimer) clearTimeout(flushTimer)
+    try { void flush() } catch {}
+  })
+}
